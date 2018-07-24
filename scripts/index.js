@@ -75,7 +75,7 @@ const generateVideoItemHtml = function(video) {
 // objects and sets the array as the value held in store.videos
 // TEST IT!
 const addVideosToStore = function(videos) {
-  store.videos.push(videos);
+  store.videos = videos;
 };
 
 // TASK:
@@ -102,10 +102,16 @@ const handleFormSubmit = function() {
 
 };
 
+const callback = function(response) {
+  const arrayOfObjVids = decorateResponse(response);
+  addVideosToStore(arrayOfObjVids);
+  render();
+};
+
 // When DOM is ready:
 $(function () {
   handleFormSubmit();
-  fetchVideos('what', decorateResponse);
+  fetchVideos('what', callback);
   console.log(store.videos);
 
 
