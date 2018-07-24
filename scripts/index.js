@@ -1,7 +1,7 @@
 'use strict';
 /* global $ */
 
-const API_KEY = 'AIzaSyCa8ZDQKgqPZeWbOGSgWy_YB5V07sofU5w';
+const API_KEY = 'AIzaSyDQfK2W0plrCh6jtYPh6onooBqOLii_-Mg';
 
 /*
   We want our store to hold a `videos` array of "decorated" objects - i.e. objects that
@@ -31,7 +31,9 @@ const BASE_URL = 'https://www.googleapis.com/youtube/v3/search';
 const fetchVideos = function(searchTerm, callback) {
   const query = {
     q: `${searchTerm} in:name`,
-    per_page: 5
+    key: 'AIzaSyDQfK2W0plrCh6jtYPh6onooBqOLii_-Mg',
+    per_page: 5,
+    part: 'snippet'
   };
   $.getJSON(BASE_URL, query, callback);
 };
@@ -91,7 +93,7 @@ const handleFormSubmit = function() {
 // When DOM is ready:
 $(function () {
   handleFormSubmit();
-  console.log(fetchVideos);
+  fetchVideos('what', () => console.log('it\'s working'));
 
   // TASK:
   // 1. Run `handleFormSubmit` to bind the event listener to the DOM
