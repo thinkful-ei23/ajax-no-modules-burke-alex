@@ -29,7 +29,11 @@ const BASE_URL = 'https://www.googleapis.com/youtube/v3/search';
 // 3. Make a getJSON call using the query object and sending the provided callback in as the last argument
 // TEST IT! Execute this function and console log the results inside the callback.
 const fetchVideos = function(searchTerm, callback) {
-
+  const query = {
+    q: `${searchTerm} in:name`,
+    per_page: 5
+  };
+  $.getJSON(BASE_URL, query, callback);
 };
 
 // TASK:
@@ -86,6 +90,9 @@ const handleFormSubmit = function() {
 
 // When DOM is ready:
 $(function () {
+  handleFormSubmit();
+  console.log(fetchVideos);
+
   // TASK:
   // 1. Run `handleFormSubmit` to bind the event listener to the DOM
 });
