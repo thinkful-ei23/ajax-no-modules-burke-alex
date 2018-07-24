@@ -4,11 +4,11 @@
 
 const store = (function(){
   const videos = [];
-  const setVideos = function() {
+  const addVideosToStore = function() {
     this.videos = videos;
   };
   return {
     videos,
-    setVideos
+    addVideosToStore
   };
 }());

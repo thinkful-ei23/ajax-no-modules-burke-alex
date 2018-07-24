@@ -1,5 +1,5 @@
 'use strict';
-/* global $ */
+/* global $ store api */
 
 
 const videoList = (function() {
@@ -15,15 +15,27 @@ const videoList = (function() {
     const arrayOfDOMElements = store.videos.map(video => generateVideoItemHtml(video));
     $('.results').html(arrayOfDOMElements);
   };
+  const decorateResponse = function(response) {
+    const arrayOfVidObjects = response.items.map(item => {
+      return {
+        id : item.id.videoId,
+        title : item.snippet.title,
+        thumbnail : item.snippet.thumbnails.medium.url,
+        description : item.snippet.description
+      };
+    });
+    console.log(arrayOfVidObjects);
+    return arrayOfVidObjects;
+  };
   const handleFormSubmit = function () {
     $('form').submit(event => {
       event.preventDefault();
       const input = $(event.currentTarget).find('#search-term');
       const searchTerm = input.val();
       input.val('');
-      fetchVideos(searchTerm, response => {
+      api.fetchVideos(searchTerm, response => {
         const arrayOfObjVids = decorateResponse(response);
-        addVideosToStore(arrayOfObjVids);
+        store.addVideosToStore(arrayOfObjVids);
         render();
       });
     });
