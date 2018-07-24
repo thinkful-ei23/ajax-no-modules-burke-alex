@@ -17,6 +17,13 @@ const videoList = (function() {
     $('.results').html(arrayOfDOMElements);
   };
   const decorateResponse = function(response) {
+    /*if ("nextPageToken" in response) {
+      // call a function
+    };
+    if ("prevPageToken" in response) {
+      // call a function
+    }*/
+  
     const arrayOfVidObjects = response.items.map(item => {
       return {
         id : item.id.videoId,
@@ -42,13 +49,17 @@ const videoList = (function() {
       });
     });
   };
-  const handleButtonSubmit = function(){
+  /*const handleButtonSubmit = function(){
     $('.button').click(function() {
-      if ($(event.currentTarget( === ))
-      $(this).removeClass('hidden');
+      if ($(event.currentTarget).hasClass('.prev') === true) {
+        // go back to the previous page using the prevPageToken
+      } else {
+        // go forward to the next page using the nextPageToken
+      }
+      $('.next').removeClass('hidden');
 
     });
-  };
+  }; */
   const bindEventListeners = function(){
     handleFormSubmit();
   };
