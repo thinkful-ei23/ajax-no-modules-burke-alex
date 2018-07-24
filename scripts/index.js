@@ -91,7 +91,8 @@ const addVideosToStore = function(videos) {
 // 3. Add your array of DOM elements to the appropriate DOM element
 // TEST IT!
 const render = function() {
-
+  const arrayOfDOMElements = store.videos.map(video => generateVideoItemHtml(video));
+  $('.results').html(arrayOfDOMElements);
 };
 
 // TASK:
