@@ -49,22 +49,17 @@ const fetchVideos = function(searchTerm, callback) {
 // TEST IT! Grab an example API response and send it into the function - make sure
 // you get back the object you want.
 
-
-
+ 
 const decorateResponse = function(response) {
-  /*console.log(response.items.map((item) => {
-    return {
-      id : item.id.videoId,
-      title : item.snippet.title,
-      thumbnail : item.snippet.thumbnails.default
-    };}));*/
-  return response.items.map((item) => {
+  const arrayOfVidObjects = response.items.map(item => {
     return {
       id : item.id.videoId,
       title : item.snippet.title,
       thumbnail : item.snippet.thumbnails.default
     };
   });
+  console.log(arrayOfVidObjects);
+  return arrayOfVidObjects;
 };
 
 // TASK:
@@ -80,7 +75,7 @@ const generateVideoItemHtml = function(video) {
 // objects and sets the array as the value held in store.videos
 // TEST IT!
 const addVideosToStore = function(videos) {
-
+  store.videos.push(videos);
 };
 
 // TASK:
@@ -111,6 +106,7 @@ const handleFormSubmit = function() {
 $(function () {
   handleFormSubmit();
   fetchVideos('what', decorateResponse);
+  console.log(store.videos);
 
 
 
