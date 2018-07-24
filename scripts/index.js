@@ -39,10 +39,6 @@ const fetchVideos = function(searchTerm, callback) {
   $.getJSON(BASE_URL, query, callback);
 };
 
-fetchVideos('js code', function(results) {
-  console.log(results);
-});
-
 
 // TASK:
 // 1. Create a `decorateResponse` function that receives the Youtube API response
@@ -52,8 +48,23 @@ fetchVideos('js code', function(results) {
 // WILL have to dig into several nested properties!
 // TEST IT! Grab an example API response and send it into the function - make sure
 // you get back the object you want.
-const decorateResponse = function(response) {
 
+
+
+const decorateResponse = function(response) {
+  /*console.log(response.items.map((item) => {
+    return {
+      id : item.id.videoId,
+      title : item.snippet.title,
+      thumbnail : item.snippet.thumbnails.default
+    };}));*/
+  return response.items.map((item) => {
+    return {
+      id : item.id.videoId,
+      title : item.snippet.title,
+      thumbnail : item.snippet.thumbnails.default
+    };
+  });
 };
 
 // TASK:
@@ -99,7 +110,7 @@ const handleFormSubmit = function() {
 // When DOM is ready:
 $(function () {
   handleFormSubmit();
-  fetchVideos('what', () => console.log('it\'s working'));
+  fetchVideos('what', decorateResponse);
 
 
 
