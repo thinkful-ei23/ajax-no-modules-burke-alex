@@ -55,7 +55,8 @@ const decorateResponse = function(response) {
     return {
       id : item.id.videoId,
       title : item.snippet.title,
-      thumbnail : item.snippet.thumbnails.medium.url
+      thumbnail : item.snippet.thumbnails.medium.url,
+      description : item.snippet.description
     };
   });
   console.log(arrayOfVidObjects);
@@ -68,9 +69,9 @@ const decorateResponse = function(response) {
 // TEST IT!
 const generateVideoItemHtml = function(video) {
   return `
-    <li>
+    <li class='video'>
       <h2>${video.title}</h2>
-      <p>${video.thumbnail}</p>
+      <a href='https://www.youtube.com/watch?v=${video.id}'><img src='${video.thumbnail}' alt='${video.description}'></a>
     </li>
   `;
 };
