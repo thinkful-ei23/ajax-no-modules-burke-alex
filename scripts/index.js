@@ -55,7 +55,7 @@ const decorateResponse = function(response) {
     return {
       id : item.id.videoId,
       title : item.snippet.title,
-      thumbnail : item.snippet.thumbnails.medium.medium.url
+      thumbnail : item.snippet.thumbnails.medium.url
     };
   });
   console.log(arrayOfVidObjects);
