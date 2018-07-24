@@ -75,7 +75,9 @@ const generateVideoItemHtml = function(video) {
 // objects and sets the array as the value held in store.videos
 // TEST IT!
 const addVideosToStore = function(videos) {
+  console.log(videos);
   store.videos = videos;
+  console.log(store.videos);
 };
 
 // TASK:
@@ -112,7 +114,6 @@ const callback = function(response) {
 $(function () {
   handleFormSubmit();
   fetchVideos('what', callback);
-  console.log(store.videos);
 
 
 
