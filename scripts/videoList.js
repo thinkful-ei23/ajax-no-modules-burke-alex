@@ -8,6 +8,7 @@ const videoList = (function() {
     <li class='video'>
       <h2>${video.title}</h2>
       <a href='https://www.youtube.com/watch?v=${video.id}'><img src='${video.thumbnail}' alt='${video.description}'></a>
+      <p><a href='https://www.youtube.com/channel/${video.channelId}'>See more videos from this channel...</a><p>
     </li>
   `;
   };
@@ -19,6 +20,7 @@ const videoList = (function() {
     const arrayOfVidObjects = response.items.map(item => {
       return {
         id : item.id.videoId,
+        channelId : item.snippet.channelId,
         title : item.snippet.title,
         thumbnail : item.snippet.thumbnails.medium.url,
         description : item.snippet.description
@@ -38,6 +40,13 @@ const videoList = (function() {
         store.addVideosToStore(arrayOfObjVids);
         render();
       });
+    });
+  };
+  const handleButtonSubmit = function(){
+    $('.button').click(function() {
+      if ($(event.currentTarget( === ))
+      $(this).removeClass('hidden');
+
     });
   };
   const bindEventListeners = function(){

@@ -14,3 +14,7 @@ body {
     list-style: none;
     margin-bottom: 2rem;
 }
+
+.hidden {
+    display: none;
+}
