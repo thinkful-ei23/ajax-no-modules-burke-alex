@@ -6,7 +6,9 @@
 'use strict';
 /* global $ */
 
+
 const api = (function(){
+  const API_KEY = 'AIzaSyDQfK2W0plrCh6jtYPh6onooBqOLii_-Mg';
   const BASE_URL = 'https://www.googleapis.com/youtube/v3/search';
 
   const fetchVideos = function(searchTerm, callback) {
