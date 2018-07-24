@@ -55,7 +55,7 @@ const decorateResponse = function(response) {
     return {
       id : item.id.videoId,
       title : item.snippet.title,
-      thumbnail : item.snippet.thumbnails.default
+      thumbnail : item.snippet.thumbnails.medium.medium.url
     };
   });
   console.log(arrayOfVidObjects);
@@ -67,7 +67,12 @@ const decorateResponse = function(response) {
 // 2. Using the object, return an HTML string containing all the expected data
 // TEST IT!
 const generateVideoItemHtml = function(video) {
-
+  return `
+    <li>
+      <h2>${video.title}</h2>
+      <p>${video.thumbnail}</p>
+    </li>
+  `;
 };
 
 // TASK:
@@ -114,8 +119,6 @@ const callback = function(response) {
 $(function () {
   handleFormSubmit();
   fetchVideos('what', callback);
-
-
 
   // TASK:
   // 1. Run `handleFormSubmit` to bind the event listener to the DOM
