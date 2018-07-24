@@ -4,7 +4,7 @@
 
 const store = (function(){
   const videos = [];
-  const addVideosToStore = function() {
+  const addVideosToStore = function(videos) {
     this.videos = videos;
   };
   return {

@@ -47,4 +47,4 @@ const videoList = (function() {
     render,
     bindEventListeners
   };
-});
+}());
