@@ -1,4 +1,7 @@
-const API_KEY = 'YOUR_KEY_HERE';
+'use strict';
+/* global $ */
+
+const API_KEY = 'AIzaSyCa8ZDQKgqPZeWbOGSgWy_YB5V07sofU5w';
 
 /*
   We want our store to hold a `videos` array of "decorated" objects - i.e. objects that
