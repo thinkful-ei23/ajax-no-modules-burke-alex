@@ -28,13 +28,21 @@ const BASE_URL = 'https://www.googleapis.com/youtube/v3/search';
 // 2. Use `searchTerm` to construct the right query object based on the Youtube API docs
 // 3. Make a getJSON call using the query object and sending the provided callback in as the last argument
 // TEST IT! Execute this function and console log the results inside the callback.
+
 const fetchVideos = function(searchTerm, callback) {
   const query = {
+    part: 'snippet',
+    key: API_KEY,
     q: `${searchTerm} in:name`,
     per_page: 5
   };
   $.getJSON(BASE_URL, query, callback);
 };
+
+fetchVideos('js code', function(results) {
+  console.log(results);
+});
+
 
 // TASK:
 // 1. Create a `decorateResponse` function that receives the Youtube API response
@@ -91,7 +99,6 @@ const handleFormSubmit = function() {
 // When DOM is ready:
 $(function () {
   handleFormSubmit();
-  console.log(fetchVideos);
 
   // TASK:
   // 1. Run `handleFormSubmit` to bind the event listener to the DOM
